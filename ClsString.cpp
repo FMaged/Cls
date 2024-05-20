@@ -291,8 +291,18 @@ string ClsString::replaceWordInString(string S,string wordToReplace, string repl
 void ClsString::replaceWordInString(string wordToReplace, string replaceTo,bool MatchCase){
     _value=replaceWordInString(_value,wordToReplace,replaceTo,MatchCase);
 }
-
-
+string ClsString::removePunctuation(string S){
+    string str="";
+    for(char C:S){
+        if(!ispunct(C)){
+            str+=C;
+        }
+    }
+    return str;
+}
+void ClsString::removePunctuation(){
+    _value=removePunctuation(_value);
+}
 
 
 
