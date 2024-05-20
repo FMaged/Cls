@@ -2,10 +2,8 @@
 #include "ClsValidate.hh"
 
 int main(){
-string str="Hallo From Earth,";
+string str="Hallo mein name is ubuntu";
 
-cout<<ClsString::countLetterInString("Maeged",'e')<<endl;
-
-
+cout<<ClsString::reverseWordInString(str)<<endl;
     return 0;
 }
