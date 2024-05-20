@@ -2,9 +2,9 @@
 #include "ClsValidate.hh"
 
 int main(){
-string str=ClsValidate::readString();
+string str="Hallo From Earth,";
 
-cout<<"the string is: "<< str <<endl;
+cout<<ClsString::countLetterInString("Maeged",'e')<<endl;
 
 
     return 0;
