@@ -78,9 +78,24 @@ short ClsString::countLetterInString(string S,char C){
     }
     return count;
 }
-
-
-
+short ClsString::countLetterInString(char C){
+    return countLetterInString(_value,C);
+}
+short ClsString::countLetter(string S, char C, bool MatchCase){
+    short count=0;
+    for (size_t i = 0; i < S.length(); i++){
+        if(MatchCase){
+            if(S[i]==C) count++;
+        }
+        else {
+            if(toupper(S[i]==toupper(C))) count++;
+        }
+    }
+    return count;
+}
+short ClsString::countLetter( char C, bool MatchCase){
+    return countLetter(_value,C,MatchCase);
+}
 
 
 
