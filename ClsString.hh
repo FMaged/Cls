@@ -56,9 +56,8 @@ static string reverseWordInString(string S);
 void  reverseWordInString();
 static string replaceWordInString(string S,string wordToReplace, string replaceTo,bool MatchCase=1);
 void replaceWordInString(string wordToReplace, string replaceTo,bool MatchCase=1);
-
-
-
+static string removePunctuation(string S);
+void removePunctuation();
 
 
 
