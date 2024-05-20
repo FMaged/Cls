@@ -1,4 +1,5 @@
 #pragma once
+
 #include "ClsValidate.hh"
 
 class ClsString {
