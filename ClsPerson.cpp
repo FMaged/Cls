@@ -29,11 +29,38 @@ string ClsPerson::getPhone(){
 }
 
 
+ClsPerson::ClsPerson(string FirstName, string LastName, string Email, string Phone){
+    _firstName=FirstName;
+    _lastName=LastName;
+    _email=Email;
+    _phone=Phone;
+}
+ClsPerson::ClsPerson(string FirstName, string LastName,string Phone){
+    _firstName=FirstName;
+    _lastName=LastName;
+    _phone=Phone;
+}
 
-
-
-
-
+string ClsPerson::getFullName(){
+    return (_firstName+" "+_lastName);
+}
+void ClsPerson::print(){
+    cout<<"\n-------------------------";
+    cout<<"\nFirstName: "<<_firstName;
+    cout<<"\nLastName : "<<_lastName;
+    cout<<"\nEmail    :"<<_email;
+    cout<<"\nPhone    :"<<_phone;
+    cout<<"\n-------------------------";
+}
+void ClsPerson::sendEmail(string Subject, string Body){
+    cout<<"\nsent successfully to Email: "<<_email;
+    cout<<"\nSubject: "<<Subject;
+    cout <<"\nBody: "<<Body;
+}
+void ClsPerson::sendSMS(string TXTMessage){
+    cout<<"\nsent successfully to Number: "<<_phone;
+    cout<<"TEXT"<<TXTMessage;
+}
 
 
 

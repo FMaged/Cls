@@ -1,10 +1,14 @@
 #include "ClsString.hh"
 #include "ClsValidate.hh"
+#include "ClsPerson.hh"
 
 int main(){
-string str="Hallo From Earth,";
+ClsPerson Person1("Yousif","Akbar","Yousif@Akbar.de","0987654321");
 
-cout<<ClsString::countLetterInString("Maeged",'e')<<endl;
+Person1.print();
+
+
+
 
 
     return 0;

@@ -1,6 +1,6 @@
 #pragma once
-#include "ClsString.hh"
-
+#include <iostream>
+using namespace std;
 class ClsPerson{
 
 private:
@@ -25,8 +25,13 @@ protected:
 
 
 public:
+ClsPerson(string FirstName, string LastName, string Email, string Phone);
+ClsPerson(string FirstName, string LastName,string Phone);
 
-
+string getFullName();
+void print();
+void sendEmail(string Subject, string Body);
+void sendSMS(string TXTMessage);
 
 
 
