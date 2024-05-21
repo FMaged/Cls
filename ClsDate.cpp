@@ -5,8 +5,8 @@ ClsDate::ClsDate(){
     time_t t=time(0);
     tm* now=localtime(&t);
     _day=now->tm_mday;
-    _month=now->tm_mon;
-    _year=now->tm_year;
+    _month=now->tm_mon+1;
+    _year=now->tm_year+1900;
 }
 ClsDate::ClsDate(short Day,short Month,short Year){
     _day=Day;
@@ -200,6 +200,9 @@ void ClsDate::printYearCalender(short Year){
 void ClsDate::printYearCalender()const{
     printYearCalender(_year);
 }
+void ClsDate::print(){
+    cout<<dateToString()<<endl;
+}
 short ClsDate::daysFromBeginnOfTheYear(short Day,short Month,short Year){
 short days=Day;
 for (short i= 1; i <= Month; i++){
@@ -279,5 +282,149 @@ bool ClsDate::isValidDate()const{
 }
 
 
+ClsDate ClsDate::AddOneDay(ClsDate Date){
+    if(isLastDayInMonth(Date)){
+        if(isLastMonthInYear(Date)){
+            Date._day=1;
+            Date._month=1;
+            Date._year++;
+        }else{
+            Date._day=1;
+            Date._month++;
+        }
+    }
+    Date._day++;
+    return Date;
+}
+void ClsDate::AddOneDay(){
+    *this=AddOneDay(*this);
+}
+ClsDate ClsDate::increaseDateByXDays(short Days,ClsDate& Date){
+    for (int i = 0; i < Days; i++){
+        Date=AddOneDay(Date);
+    }
+    return Date;
+} 
+void ClsDate::increaseDateByXDays(short Days){
+    *this=increaseDateByXDays(Days,*this);
+}
+ClsDate ClsDate::increaseDateByOneWeek(ClsDate& Date){
+    Date=increaseDateByXDays(7,Date);
+    return Date;
+
+}
+void ClsDate::increaseDateByOneWeek(){
+    *this=increaseDateByOneWeek(*this);
+}
+ClsDate ClsDate::increaseDateByXWeeks(short weeks,ClsDate& Date){
+    for (int i = 0; i < weeks; i++){
+        Date=increaseDateByOneWeek(Date);
+    }
+    return Date;
+}
+void ClsDate::increaseDateByXWeeks(short weeks){
+    *this=increaseDateByXWeeks(weeks,*this);
+}
+ClsDate ClsDate::increaseDateByOneMonth(ClsDate& Date){
+    if(Date._month==12){
+        Date._month=1;
+        Date._year++;
+    }else{
+        Date._month++;
+    }
+
+
+    return Date;
+}
+void ClsDate::increaseDateByOneMonth(){
+    *this=increaseDateByOneMonth(*this);
+}
+ClsDate ClsDate::increaseDateByXMonth(short Months,ClsDate& Date){
+    for (int i = 0; i < Months; i++){
+        Date=increaseDateByOneMonth(Date);
+    }
+    return Date;
+    
+}
+void ClsDate::increaseDateByXMonth(short Months){
+    *this=increaseDateByXMonth(Months,*this);
+}
+ClsDate ClsDate::increaseDateByOneYear(ClsDate& Date){
+    Date._year++;
+    return Date;
+}
+void ClsDate::increaseDateByOneYear(){
+    *this=increaseDateByOneYear(*this);
+}
+ClsDate ClsDate::increaseDateByXYear(short Year, ClsDate& Date){
+    Date._year+=Year;
+    return Date;
+}
+void ClsDate::increaseDateByXYear(short Years){
+    *this=increaseDateByXYear(Years,*this);
+}
+ClsDate ClsDate::increaseDateByOneDecade(ClsDate& Date){
+    Date._year+=10;
+    return Date;
+
+}
+void ClsDate::increaseDateByOneDecade(){
+    *this=increaseDateByOneDecade(*this);
+}
+ClsDate ClsDate::increaseDateByXDecade(short Decacdes, ClsDate& Date){
+    Date._year*=Decacdes*10;
+    return Date;
+}
+void ClsDate::increaseDateByXDecade(short Decacdes){
+    *this=increaseDateByXDecade(Decacdes,*this);
+}
+
+
+
+
+
+
+
+
+
+
+void ClsDate::swapDates( ClsDate&  Date1, ClsDate&  Date2){
+    ClsDate temp;
+    temp._day=Date1._day;
+    temp._month=Date1._month;
+    temp._year=Date1._year;
+
+    Date1._day=Date2._day;
+    Date1._month=Date2._month;
+    Date1._year=Date2._year;
+
+    Date2._day=temp._day;
+    Date2._month=temp._month;
+    Date2._year=temp._year;
+}
+void ClsDate::swapDates(ClsDate& Date2){
+    swapDates(*this,Date2);
+}
+ClsDate ClsDate::getSystemDate(){
+    ClsDate Date;
+    return Date;
+
+}
+
+
+int ClsDate::getDifferenceInDays(ClsDate  Date1,ClsDate  Date2,bool IncludeEndDay){
+int Days=0;
+int swapFlag=1;
+if(!isDate1BeforeDate2(Date1,Date2)){
+    swapDates(Date1,Date2);
+    swapFlag=-1;
+}
+while (isDate1BeforeDate2(Date1,Date2)){
+    Days++;
+    Date1=AddOneDay(Date1);
+}
+return IncludeEndDay?++Days*swapFlag:Days*swapFlag;
+
+}
 
 

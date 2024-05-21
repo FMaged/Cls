@@ -4,9 +4,10 @@
 
 int main(){
 
-ClsDate Date;
-ClsDate Date2("1.1.2023");
+ClsDate Date("25.05.1999");
+ClsDate Date2=ClsDate::getSystemDate();
 
-cout<<endl<<ClsDate::isValidDate(Date)<<endl;
+Date.print();
+Date2.print();
     return 0;
 }
