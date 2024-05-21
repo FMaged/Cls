@@ -1,10 +1,12 @@
 #include "ClsString.hh"
 #include "ClsValidate.hh"
+#include "ClsDate.hh"
 
 int main(){
-string str="Hallo From Earth,";
 
-cout<<ClsString::countLetterInString("Maeged",'e')<<endl;
+ClsDate Date("25.05.2024");
+Date.printDataOfYear();
+
 
 
     return 0;
