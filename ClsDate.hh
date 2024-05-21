@@ -130,6 +130,13 @@ public:
     static ClsDate decreaseDateByXDecacdes(short Decacdes,ClsDate& Date);
     void decreaseDateByXDecacdes(short Decacdes);
 
+    static short daysUntilTheEndOfWeek(const ClsDate& Date);
+    short daysUntilTheEndOfWeek();
+    static short daysUntilTheEndOfMonth(const ClsDate& Date);
+    short daysUntilTheEndOfMonth();
+    static short daysUntilTheEndOfYear(const ClsDate& Date);
+    short daysUntilTheEndOfYear();
+        
 
     static int getDifferenceInDays(ClsDate  Date1,ClsDate  Date2,bool IncludeEndDay=false);
     int getDifferenceInDays(const ClsDate&  Date2,bool IncludeEndDay=false)const;

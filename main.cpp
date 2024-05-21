@@ -4,10 +4,10 @@
 
 int main(){
 
-ClsDate Date("31.03.2024");
+
 ClsDate Date2=ClsDate::getSystemDate();
-Date.decreaseDateByXDecacdes(2);
-Date.print();
+cout<<endl<<Date2.daysUntilTheEndOfMonth()<<endl;
+
 Date2.print();
     return 0;
 }
