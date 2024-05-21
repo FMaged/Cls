@@ -332,7 +332,10 @@ ClsDate ClsDate::increaseDateByOneMonth(ClsDate& Date){
     }else{
         Date._month++;
     }
-
+    short numberOdDaysInThisMonth=numberOfDaysInMonth(Date._month,Date._year);
+    if(Date._day>numberOdDaysInThisMonth){
+        Date._day=numberOdDaysInThisMonth;
+    }
 
     return Date;
 }
@@ -379,14 +382,106 @@ void ClsDate::increaseDateByXDecade(short Decacdes){
     *this=increaseDateByXDecade(Decacdes,*this);
 }
 
+ClsDate ClsDate::decreaseDateByOneDay(ClsDate& Date){
+    if(Date._day==1){
+        if(Date._month==1){
+            Date._month=12;
+            Date._day=31;
+            Date._year--;
 
+            
 
-
-
-
-
-
-
+        }else{
+            Date._month--;
+            Date._day=numberOfDaysInMonth(Date._month,Date._year);
+        }
+    }else{
+        Date._day--;
+    }
+    return Date;
+}
+void ClsDate::decreaseDateByOneDay(){
+    *this=decreaseDateByOneDay(*this);
+}
+ClsDate ClsDate::decreaseDateByXDays(short Days,ClsDate& Date){
+    for(int i=0;i<Days;i++){
+        Date=decreaseDateByOneDay(Date);
+    }
+    return Date;
+}
+ void ClsDate::decreaseDateByXDays(short Days){
+    *this=decreaseDateByXDays(Days,*this);
+ }
+ClsDate ClsDate::decreaseDateByOneWeek(ClsDate& Date){
+    Date=decreaseDateByXDays(7,Date);
+    return Date;
+}
+void ClsDate::decreaseDateByOneWeek(){
+    *this=decreaseDateByOneWeek(*this);
+}
+ClsDate ClsDate::decreaseDateByXWeeks(short Weeks,ClsDate& Date){
+    for (int i = 0; i < Weeks; i++){
+        Date=decreaseDateByOneWeek(Date);
+    }
+    return Date;
+}
+void ClsDate::decreaseDateByXWeeks(short Weeks){
+    *this=decreaseDateByXWeeks(Weeks,*this);
+}
+ClsDate ClsDate::decreaseDateByOneMonth(ClsDate& Date){
+    if(Date._month==1){
+        Date._month=12;
+        Date._year--;
+    }else{
+        Date._month--;
+    }
+    short numberOfDaysInThisMonth=numberOfDaysInMonth(Date._month,Date._year);
+    if(Date._day>numberOfDaysInThisMonth){
+        Date._day=numberOfDaysInThisMonth;
+    }
+    return Date;
+}
+void ClsDate::decreaseDateByOneMonth() {
+    *this=decreaseDateByOneMonth(*this);
+}
+ClsDate ClsDate::decreaseDateByXMonths(short Months,ClsDate& Date){
+    for (short i = 0; i < Months; i++){
+        Date=decreaseDateByOneMonth(Date);
+    }
+    return Date;
+    
+}
+void ClsDate::decreaseDateByXMonths(short Months){
+    *this=decreaseDateByXMonths(Months,*this);
+}
+ClsDate ClsDate::decreaseDateByOneYear(ClsDate& Date){
+    Date._year--;
+    return Date;
+}
+void ClsDate::decreaseDateByOneYear(){
+    *this=decreaseDateByOneYear(*this);
+}
+ClsDate ClsDate::decreaseDateByXYear(short Year,ClsDate& Date){
+    Date._year+=Year;
+    return Date;
+}
+void ClsDate::decreaseDateByXYear(short Year){
+    *this=decreaseDateByXYear(Year,*this);
+}
+ClsDate ClsDate::decreaseDateByOneDecacde(ClsDate& Date){
+    Date._year-=10;
+    return Date;
+}
+void ClsDate::decreaseDateByOneDecacde(){
+    *this=decreaseDateByOneDecacde(*this);
+}
+ClsDate ClsDate::decreaseDateByXDecacdes(short Decacdes,ClsDate& Date){
+    Date._year-=Decacdes*10;
+    return Date;
+}
+void ClsDate::decreaseDateByXDecacdes(short Decacdes){
+    *this=decreaseDateByXDecacdes(Decacdes,*this);
+}
 
 void ClsDate::swapDates( ClsDate&  Date1, ClsDate&  Date2){
     ClsDate temp;

@@ -94,7 +94,7 @@ public:
     void increaseDateByOneWeek();
     static ClsDate increaseDateByXWeeks(short weeks,ClsDate& Date);
     void increaseDateByXWeeks(short weeks);
-    static ClsDate increaseDateByOneMonth(ClsDate& Date);       //what if it 31.01.2024 increasing schuld not be 31.02.2024 NEED TO SOLVE!!!!
+    static ClsDate increaseDateByOneMonth(ClsDate& Date);       
     void increaseDateByOneMonth();
     static ClsDate increaseDateByXMonth(short Months,ClsDate& Date);
     void increaseDateByXMonth(short Months);
@@ -108,8 +108,27 @@ public:
     void increaseDateByXDecade(short Decacdes);
 
 
-
-
+    //Decrease
+    static ClsDate decreaseDateByOneDay(ClsDate& Date);
+    void decreaseDateByOneDay();
+    static ClsDate decreaseDateByXDays(short Days,ClsDate& Date);
+    void decreaseDateByXDays(short Days);
+    static ClsDate decreaseDateByOneWeek(ClsDate& Date);  
+    void decreaseDateByOneWeek();
+    static ClsDate decreaseDateByXWeeks(short Weeks,ClsDate& Date);
+    void decreaseDateByXWeeks(short Weeks);
+    static ClsDate decreaseDateByOneMonth(ClsDate& Date);
+    void decreaseDateByOneMonth();
+    static ClsDate decreaseDateByXMonths(short Months,ClsDate& Date);
+    void decreaseDateByXMonths(short Months);
+    static ClsDate decreaseDateByOneYear(ClsDate& Date);
+    void decreaseDateByOneYear();
+    static ClsDate decreaseDateByXYear(short Year,ClsDate& Date);
+    void decreaseDateByXYear(short Year);
+    static ClsDate decreaseDateByOneDecacde(ClsDate& Date);
+    void decreaseDateByOneDecacde();
+    static ClsDate decreaseDateByXDecacdes(short Decacdes,ClsDate& Date);
+    void decreaseDateByXDecacdes(short Decacdes);
 
 
     static int getDifferenceInDays(ClsDate  Date1,ClsDate  Date2,bool IncludeEndDay=false);

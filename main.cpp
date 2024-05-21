@@ -1,16 +1,13 @@
 #include "ClsClient.hh"
-
+#include "ClsDate.hh"
 
 int main(){
-<<<<<<< HEAD
 
-ClsDate Date("25.05.1999");
+
+ClsDate Date("31.03.2024");
 ClsDate Date2=ClsDate::getSystemDate();
-=======
-ClsClient Client("khaaled","kadi","kha@kadi.de","0192837465","A123","0000",9000);
-Client.print();
 
->>>>>>> ClsClient
+Date.decreaseDateByXDecacdes(2);
 
 Date.print();
 Date2.print();
