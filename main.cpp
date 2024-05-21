@@ -5,10 +5,10 @@
 
 int main(){
 
-ClsDate Date("25.05.2024");
-Date.printDataOfYear();
+ClsDate Date("25.05.1999");
+ClsDate Date2=ClsDate::getSystemDate();
 
-
-
+Date.print();
+Date2.print();
     return 0;
 }
