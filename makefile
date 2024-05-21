@@ -4,11 +4,11 @@ CC := g++
 CFLAGS := -Wall -Wextra -std=c++11
 
 # Source files
-SRCS := ClsString.cpp ClsValidate.cpp main.cpp ClsDate.cpp
+SRCS := ClsString.cpp ClsValidate.cpp main.cpp ClsDate.cpp ClsClient.cpp
 # Object files
 OBJS := $(SRCS:.cpp=.o)
 # Header files
-HDRS := ClsString.hh ClsValidate.hh ClsDate.hh
+HDRS := ClsString.hh ClsValidate.hh ClsDate.hh ClsClient.hh
 
 # Output executable
 TARGET := make
