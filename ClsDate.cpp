@@ -212,13 +212,13 @@ short ClsDate::daysFromBeginnOfTheYear()const{
 }
 
 bool ClsDate::isDate1BeforeDate2(const ClsDate& Date1,const ClsDate& Date2){
-    return (Date1._year<Date2._year)?1:((Date1._year==Date2._year)?(Date1._month<Date2._month?1:(Date1._month==Date2._month?Date1._day<Date2._day:false)):false);
+    return (Date1._year<Date2._year)?true:((Date1._year==Date2._year)?(Date1._month<Date2._month?true:(Date1._month==Date2._month?Date1._day<Date2._day:false)):false);
 }
 bool ClsDate::isBeforeDate2(const ClsDate& Date2)const{
     return isDate1BeforeDate2(*this,Date2);
 }
 bool ClsDate::isDate1AfterDate2(const ClsDate& Date1,const ClsDate& Date2){
-        return (Date1._year>Date2._year)?1:((Date1._year==Date2._year)?(Date1._month>Date2._month?1:(Date1._month==Date2._month?Date1._day>Date2._day:false)):false);
+        return (Date1._year>Date2._year)?true:((Date1._year==Date2._year)?(Date1._month>Date2._month?true:(Date1._month==Date2._month?Date1._day>Date2._day:false)):false);
 
 }
 bool ClsDate::isAfterDate2(const ClsDate& Date2)const{
