@@ -134,13 +134,72 @@ void ClsDate::printDataOfYear(short Year){
 void ClsDate::printDataOfYear(){
     printDataOfYear(_year);
 }
+short ClsDate::dayOfWeekOrder(short Day,short Month,short Year){
+    short a=(14-Month)/12;
+    short y= Year-a;
+    short m=Month+(12*a)-2;
+    return (Day+y+(y/4)-(y/100)+(y/400)+((31*m)/12))%7;
+}
+short ClsDate::dayOfWeekOrder(ClsDate Date){
+    short a=(14-Date._month)/12;
+    short y=Date._year-a;
+    short m=Date._month+(12*a)-2;
+    return (Date._day+y+(y/4)-(y/100)+(y/400)+((31*m)/12))%7;
+}
+short ClsDate::dayOfWeekOrder(){
+    return dayOfWeekOrder(_day,_month,_year);
+}
+string ClsDate::dayShortName(short DayOfWeekOrder){
+    string DayName[]={"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
 
+    return DayName[DayOfWeekOrder];
 
+}
+string ClsDate::dayShortName(){
+    return dayShortName(dayOfWeekOrder(*this));
+}
+string ClsDate::MonthShortName(short Month){
+    string monthName[]={"jan","Feb","Mar","Apr","Mai","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
+    return monthName[Month-1];
+}
+string ClsDate::MonthShortName(){
+    return MonthShortName(_month);
+}
+void ClsDate::printMonthCalender(short Month,short Year){
+    int numberOfDays=numberOfDaysInMonth(Month,Year);
+    int current=dayOfWeekOrder(1,Month,Year);
+    printf("\n---------------%s-----------------\n",MonthShortName(Month).c_str());
+    printf("  Sun  Mon  Tue  Wed  Thu  Fri  Sat\n");
+    int i;
+    for ( i = 0; i < current; i++)
+        printf("     ");
+    for(int j=1;j<numberOfDays;j++){
+        printf("%5d",j);
+        if(++i==7){
+            i=0,
+            printf("\n");
+        }
+    }
 
+    printf("\n-----------------------------------\n");
+    
 
-
-
-
+}
+void ClsDate::printMonthCalender(){
+    printMonthCalender(_month,_year);
+}
+void ClsDate::printYearCalender(short Year){
+     printf("\n____________________________________\n\n");
+     printf("         Calender - %d\n",Year);
+     printf("______________________________________\n");
+     for (size_t i = 1; i < 12; i++){
+        printMonthCalender(i,Year);
+     }
+     
+}
+void ClsDate::printYearCalender(){
+    printYearCalender(_year);
+}
 
 
 

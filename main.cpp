@@ -4,10 +4,11 @@
 
 int main(){
 
-ClsDate Date("25.05.2024");
+ClsDate Date("21.05.2024");
 Date.printDataOfYear();
+cout<<endl<<Date.dayOfWeekOrder()<<endl;
 
-
+Date.printYearCalender();
 
     return 0;
 }
