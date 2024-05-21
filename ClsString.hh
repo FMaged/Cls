@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
-#include "ClsValidate.hh"
-
+#include <iostream>
+using namespace std;
 class ClsString {
 string _value;
 

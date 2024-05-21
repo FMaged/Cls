@@ -50,7 +50,7 @@ void ClsPerson::print(){
     cout<<"\nLastName : "<<_lastName;
     cout<<"\nEmail    :"<<_email;
     cout<<"\nPhone    :"<<_phone;
-    cout<<"\n-------------------------";
+    cout<<"\n-------------------------\n";
 }
 void ClsPerson::sendEmail(string Subject, string Body){
     cout<<"\nsent successfully to Email: "<<_email;
