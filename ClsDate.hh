@@ -47,21 +47,41 @@ public:
  
     static short dayOfWeekOrder(ClsDate Date);
     static short dayOfWeekOrder(short Day,short Month,short Year);
-    short dayOfWeekOrder();
+    short dayOfWeekOrder()const;
     static string dayShortName(short DayOfWeekOrder);
-    string dayShortName();
+    string dayShortName()const;
     static string MonthShortName(short Month);
-    string MonthShortName();
+    string MonthShortName()const;
 
     static void printDataOfYear(short Year);
-    void printDataOfYear();
+    void printDataOfYear()const;
     static void printMonthCalender(short Month,short Year);
-    void printMonthCalender();
+    void printMonthCalender()const;
     static void printYearCalender(short Year);
-    void printYearCalender();
+    void printYearCalender()const;
+    
+    static short daysFromBeginnOfTheYear(short Day,short Month,short Year);
+    short daysFromBeginnOfTheYear()const;
 
 
-
+    static bool isDate1BeforeDate2(const ClsDate& Date1, const ClsDate& Date2);
+    bool isBeforeDate2(const ClsDate& Date2)const;
+    static bool isDate1AfterDate2(const ClsDate& Date1,const ClsDate& Date2);
+    bool isAfterDate2(const ClsDate& Date2)const;
+    static bool isDate1EqualToDate2(const ClsDate& Date1, const ClsDate& Date2);
+    bool isEqualToDate2(const ClsDate& Date2)const;
+    static bool isLastDayInMonth(const ClsDate& Date);
+    bool isLastDayInMonth()const;
+    static bool isLastMonthInYear(const ClsDate& Date);
+    bool isLastMonthInYear()const;
+    static bool isEndOfWeek(const ClsDate& Date);
+    bool isEndOfWeek()const;
+    static bool isWeekEnd(const ClsDate& Date);
+    bool isWeekEnd()const;
+    static bool isBusinessDay(const ClsDate& Date);            //dose not include official holidays
+    bool isBusinessDay()const;
+    static bool isValidDate(const ClsDate& Date);
+    bool isValidDate()const;
 
 
 

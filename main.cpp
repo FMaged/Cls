@@ -4,11 +4,9 @@
 
 int main(){
 
-ClsDate Date("21.05.2024");
-Date.printDataOfYear();
-cout<<endl<<Date.dayOfWeekOrder()<<endl;
+ClsDate Date;
+ClsDate Date2("1.1.2023");
 
-Date.printYearCalender();
-
+cout<<endl<<ClsDate::isValidDate(Date)<<endl;
     return 0;
 }

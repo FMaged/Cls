@@ -131,7 +131,7 @@ void ClsDate::printDataOfYear(short Year){
     cout<<"\nSecunds: "<<numebrOfSecundsInYear(Year);
     cout<<"\n-----------------------------";
 }
-void ClsDate::printDataOfYear(){
+void ClsDate::printDataOfYear()const{
     printDataOfYear(_year);
 }
 short ClsDate::dayOfWeekOrder(short Day,short Month,short Year){
@@ -146,7 +146,7 @@ short ClsDate::dayOfWeekOrder(ClsDate Date){
     short m=Date._month+(12*a)-2;
     return (Date._day+y+(y/4)-(y/100)+(y/400)+((31*m)/12))%7;
 }
-short ClsDate::dayOfWeekOrder(){
+short ClsDate::dayOfWeekOrder()const{
     return dayOfWeekOrder(_day,_month,_year);
 }
 string ClsDate::dayShortName(short DayOfWeekOrder){
@@ -155,14 +155,14 @@ string ClsDate::dayShortName(short DayOfWeekOrder){
     return DayName[DayOfWeekOrder];
 
 }
-string ClsDate::dayShortName(){
+string ClsDate::dayShortName()const{
     return dayShortName(dayOfWeekOrder(*this));
 }
 string ClsDate::MonthShortName(short Month){
     string monthName[]={"jan","Feb","Mar","Apr","Mai","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
     return monthName[Month-1];
 }
-string ClsDate::MonthShortName(){
+string ClsDate::MonthShortName()const{
     return MonthShortName(_month);
 }
 void ClsDate::printMonthCalender(short Month,short Year){
@@ -185,7 +185,7 @@ void ClsDate::printMonthCalender(short Month,short Year){
     
 
 }
-void ClsDate::printMonthCalender(){
+void ClsDate::printMonthCalender()const{
     printMonthCalender(_month,_year);
 }
 void ClsDate::printYearCalender(short Year){
@@ -197,25 +197,86 @@ void ClsDate::printYearCalender(short Year){
      }
      
 }
-void ClsDate::printYearCalender(){
+void ClsDate::printYearCalender()const{
     printYearCalender(_year);
 }
+short ClsDate::daysFromBeginnOfTheYear(short Day,short Month,short Year){
+short days=Day;
+for (short i= 1; i <= Month; i++){
+    days+=numberOfDaysInMonth(Month,Year);
+}
+return days;
+}
+short ClsDate::daysFromBeginnOfTheYear()const{
+    return daysFromBeginnOfTheYear(_day,_month,_year);
+}
 
+bool ClsDate::isDate1BeforeDate2(const ClsDate& Date1,const ClsDate& Date2){
+    return (Date1._year<Date2._year)?1:((Date1._year==Date2._year)?(Date1._month<Date2._month?1:(Date1._month==Date2._month?Date1._day<Date2._day:false)):false);
+}
+bool ClsDate::isBeforeDate2(const ClsDate& Date2)const{
+    return isDate1BeforeDate2(*this,Date2);
+}
+bool ClsDate::isDate1AfterDate2(const ClsDate& Date1,const ClsDate& Date2){
+        return (Date1._year>Date2._year)?1:((Date1._year==Date2._year)?(Date1._month>Date2._month?1:(Date1._month==Date2._month?Date1._day>Date2._day:false)):false);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
+bool ClsDate::isAfterDate2(const ClsDate& Date2)const{
+    return isDate1AfterDate2(*this,Date2);
+}
+bool ClsDate::isDate1EqualToDate2(const ClsDate& Date1,const ClsDate& Date2){
+    return (Date1._year==Date2._year)?((Date1._month==Date2._month)?(Date1._day==Date2._day?true:false):false):false;
+}
+bool ClsDate::isEqualToDate2(const ClsDate& Date2)const{
+    return isDate1EqualToDate2(*this,Date2);
+}
+bool ClsDate::isLastDayInMonth(const ClsDate& Date){
+    return (Date._day==numberOfDaysInMonth(Date._month,Date._year));
+}
+bool ClsDate::isLastDayInMonth()const{
+    return isLastDayInMonth(*this);
+}
+bool ClsDate::isLastMonthInYear(const ClsDate& Date){
+    return (Date._month==12);
+}
+bool ClsDate::isLastMonthInYear()const{
+    return isLastMonthInYear(*this);
+}
+bool ClsDate::isEndOfWeek(const ClsDate& Date){
+    return (dayOfWeekOrder(Date)==0);
+}
+bool ClsDate::isEndOfWeek()const{
+    return isEndOfWeek(*this);
+}
+bool ClsDate::isWeekEnd(const ClsDate& Date){
+    return (dayOfWeekOrder(Date)==0||dayOfWeekOrder(Date)==6);
+}
+bool ClsDate::isWeekEnd()const{
+    return isWeekEnd(*this);
+}
+bool ClsDate::isBusinessDay(const ClsDate& Date){
+    return isWeekEnd(Date);
+}
+bool ClsDate::isBusinessDay()const{
+    return isBusinessDay(*this);
+}
+bool ClsDate::isValidDate(const ClsDate& Date) {
+    if (Date._month < 1 || Date._month > 12) return false;
+    if (Date._day < 1 || Date._day > numberOfDaysInMonth(Date._month, Date._year)) return false;
+    
+    // Specific check for February
+    if (Date._month == 2) {
+        if (isLeapYear(Date._year)) {
+            if (Date._day > 29) return false;
+        } else {
+            if (Date._day > 28) return false;
+        }
+    }
+    return true;
+}
+bool ClsDate::isValidDate()const{
+    return isValidDate(*this);
+}
 
 
 
