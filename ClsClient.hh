@@ -11,7 +11,7 @@ class ClsClient:public ClsPerson{
 private:
 
     
-    enum enMode { EmptyMode = 0, UpdateMode = 1 };
+    enum enMode { EmptyMode = 0, UpdateMode = 1,AddNewMode=2 };
     enMode _Mode;
 
     string _accountNumber;
@@ -24,9 +24,10 @@ private:
     static vector<ClsClient>_loadClientsFromFile();
     static void _saveClientsDataToFile(vector<ClsClient>vClients);
     void _update();
+    void _addNew();
     void _addDataLineToFile(string Line);
 
-
+        
 
 public:
     ClsClient(enMode Mode,string FirstName, string LastName, string Email, string Phone,string AccountNumber,string PinCode,double Balance)
@@ -47,8 +48,10 @@ public:
     void print();
     static ClsClient find(string AccountNumber);
     static bool isClientExist(string AccountNumber);
+    static ClsClient addNewClient(string AccountNumber);
 
-    enum enSaveResult{svFaild=0,svSucceeded=1};
+
+    enum enSaveResult{svFaildEmptyObj=0,svSucceeded=1,svFaildAccNumberExists=2};
     enSaveResult save();
     
 };  

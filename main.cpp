@@ -25,7 +25,7 @@ void updateClient(){
     cout<<"\nPls enter account number: ";
     accountnum=ClsValidate::readString();
     while (!ClsClient::isClientExist(accountnum)){
-        cout<<"\nAccount number is not founf, chose another one!";
+        cout<<"\nAccount number is not found, chose another one!";
         accountnum=ClsValidate::readString();
     }
     ClsClient Client=ClsClient::find(accountnum);
@@ -41,16 +41,43 @@ void updateClient(){
             cout << "\nAccount Updated Successfully :-)\n";
             Client.print();
             break;
-        case ClsClient::enSaveResult::svFaild:
+        case ClsClient::enSaveResult::svFaildEmptyObj:
             cout << "\nError account was not saved because it's Empty";
             break;
     }
 
 
 }
+void AddNewClient(){
+    string accountNumber;
 
+    cout<<"\nPls enter account number: ";
+    accountNumber=ClsValidate::readString();
+    while (ClsClient::isClientExist(accountNumber)){
+        cout<<"\nAccount number is Exist, chose another one!";
+        accountNumber=ClsValidate::readString();
+    }
+    ClsClient newClient=ClsClient::addNewClient(accountNumber);
+    readClientInfo(newClient);
+    ClsClient::enSaveResult SaveResult=newClient.save();
+    switch (SaveResult){
+    case ClsClient::enSaveResult::svSucceeded:
+        cout << "\nAccount Addeded Successfully :-)\n";
+        newClient.print();
+        break;
+    case ClsClient::enSaveResult::svFaildEmptyObj:
+        cout << "\nError account was not saved because it's Empty";
+        break;
+    case ClsClient::enSaveResult::svFaildAccNumberExists:
+        cout << "\nError account was not saved because account number is used!\n";
+        break;
+    default:
+        break;
+    }
+
+}
 int main(){
-    updateClient();
+    AddNewClient();
 
     return 0;
 }
