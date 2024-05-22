@@ -40,9 +40,9 @@ static void printEachWordInString(string S,string Delimiter=" ");
 void printEachWordInString();
 static int countWordsInString(string S,string Delimiter=" ");  //Always Add the Delimiter
 int countWordsInString(string Delimiter=" ");
-static vector<string> splitString(string S,string Delimiter=" ");
-vector<string> splitString(string Delimiter=" ");
-static string joinString(vector<string>vec,string Delimiter=" ");
+static vector<string> splitString(string S,string Delimiter="#//#");
+vector<string> splitString(string Delimiter="#//#");
+static string joinString(vector<string>vec,string Delimiter="#//#");
 void joinStringToValue(vector<string>vec,string Delimiter=" ");
 static string joinString(string arr[],int size,string Delimiter=" ");
 void joinStringToValue(string arr[],int size,string Delimiter=" ");
