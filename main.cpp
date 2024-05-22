@@ -50,17 +50,8 @@ void updateClient(){
 }
 
 int main(){
-ClsClient Client("khaaled","kadi","kha@kadi.de","0192837465","A123","0000",9000);
-Client.print();
+updateClient();
 
 
-<<<<<<< HEAD
-=======
-
-ClsDate Date2=ClsDate::getSystemDate();
-cout<<endl<<Date2.daysUntilTheEndOfMonth()<<endl;
-
-Date2.print();
->>>>>>> ClsDate
     return 0;
-}
+}   
