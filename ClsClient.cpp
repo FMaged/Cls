@@ -1,16 +1,16 @@
 #include "ClsClient.hh"
 
 
-string ClsClient::getAccountNumber(){
+string ClsClient::getAccountNumber()const{
     return _accountNumber;
 }
-double ClsClient::getBalance(){
+double ClsClient::getBalance()const{
     return _balance;
 }
-bool ClsClient::isEmpty(){
+bool ClsClient::isEmpty()const{
     return (_Mode==enMode::EmptyMode);
 }
-string ClsClient::getPinCode(){
+string ClsClient::getPinCode()const{
     return _pinCode;
 }
 void ClsClient::setBalance(double Balance){
@@ -87,7 +87,7 @@ ClsClient ClsClient::_convertLineToClient(string Line,string Seperator){
     return ClsClient(enMode::UpdateMode, vClientData[0], vClientData[1], vClientData[2],
         vClientData[3], vClientData[4], vClientData[5], stod(vClientData[6]));
 }
-string ClsClient::_converClientToLine(ClsClient Client,string Seperator){
+string ClsClient::_converClientToLine( ClsClient Client,string Seperator){
     string clientRecord="";
     clientRecord+=Client.getFirstName()+Seperator;
     clientRecord+=Client.getLastName()+Seperator;

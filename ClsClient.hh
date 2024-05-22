@@ -19,7 +19,7 @@ private:
     double _balance;
 
     static ClsClient _convertLineToClient(string Line,string Seperator="#//#");
-    static string _converClientToLine(ClsClient Client,string Seperator="#//#");
+    static string _converClientToLine( ClsClient Client,string Seperator="#//#");
     static ClsClient _getEmptyClientObj();
     static vector<ClsClient>_loadClientsFromFile();
     static void _saveClientsDataToFile(vector<ClsClient>vClients);
@@ -37,10 +37,10 @@ public:
         _balance=Balance;
     }
 
-    bool isEmpty();
-    string getAccountNumber();
-    double getBalance();
-    string getPinCode();
+    bool isEmpty()const;
+    string getAccountNumber()const;
+    double getBalance()const;
+    string getPinCode()const;
 
     void setBalance(double Balance);
     void setPinCode(string PinCode);

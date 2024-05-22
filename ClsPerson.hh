@@ -20,10 +20,10 @@ public:
     void setPhone(string Phone);
 
     //Get Property
-    string getFirstName();
-    string getLastName();
-    string getEmail();
-    string getPhone();
+    string getFirstName()const;
+    string getLastName()const;
+    string getEmail()const;
+    string getPhone()const;
 
 
 
@@ -31,8 +31,8 @@ public:
 ClsPerson(string FirstName, string LastName, string Email, string Phone);
 ClsPerson(string FirstName, string LastName,string Phone);
 
-string getFullName();
-void print();
+string getFullName()const;
+void print()const;
 void sendEmail(string Subject, string Body);
 void sendSMS(string TXTMessage);
 
