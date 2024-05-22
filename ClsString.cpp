@@ -188,7 +188,7 @@ void ClsString::printEachWordInString(){
 vector<string> ClsString::splitString(string S,string Delimiter){
 vector<string> vec;
 size_t pos=0;
-string sWord="";
+string sWord;
 while ((pos=S.find(Delimiter))!=std::string::npos){
     sWord=S.substr(0,pos);
     if(sWord!=""){

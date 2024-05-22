@@ -12,7 +12,7 @@ string _lastName;
 string _email;
 string _phone; 
 
-protected:
+public:
     //Set Property
     void setFirstName(string FirstName);
     void setLastName(string LastName);
@@ -27,7 +27,7 @@ protected:
 
 
 
-public:
+
 ClsPerson(string FirstName, string LastName, string Email, string Phone);
 ClsPerson(string FirstName, string LastName,string Phone);
 
