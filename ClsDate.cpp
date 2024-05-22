@@ -483,6 +483,33 @@ void ClsDate::decreaseDateByXDecacdes(short Decacdes){
     *this=decreaseDateByXDecacdes(Decacdes,*this);
 }
 
+short ClsDate::daysUntilTheEndOfWeek(const ClsDate& Date){
+    return 6-dayOfWeekOrder(Date);
+}
+short ClsDate::daysUntilTheEndOfWeek(){
+    return daysUntilTheEndOfWeek(*this);
+}
+short ClsDate::daysUntilTheEndOfMonth(const ClsDate& Date){
+    ClsDate Date2;  
+    Date2._day=numberOfDaysInMonth(Date2._month,Date2._year);
+    Date2._month=Date._month;
+    Date2._year=Date2._year;
+    return getDifferenceInDays(Date,Date2,true);
+
+}
+short ClsDate::daysUntilTheEndOfMonth(){
+    return daysUntilTheEndOfMonth(*this);
+}
+short ClsDate::daysUntilTheEndOfYear(const ClsDate& Date){
+    ClsDate Date2("31.12.1");
+    Date2._year=Date._year;
+    return getDifferenceInDays(Date,Date2,true);
+
+}
+short ClsDate::daysUntilTheEndOfYear(){
+    return daysUntilTheEndOfYear(*this);
+}
+
 void ClsDate::swapDates( ClsDate&  Date1, ClsDate&  Date2){
     ClsDate temp;
     temp._day=Date1._day;
