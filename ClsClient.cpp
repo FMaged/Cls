@@ -81,7 +81,9 @@ void ClsClient::_addDataLineToFile(string Line){
         myFile.close();
     }
 }
-
+void ClsClient::_addNew(){
+    _addDataLineToFile(_converClientToLine(*this));
+}
 ClsClient ClsClient::_convertLineToClient(string Line,string Seperator){
     vector<string>vClientData=ClsString::splitString(Line,Seperator);
     return ClsClient(enMode::UpdateMode, vClientData[0], vClientData[1], vClientData[2],
@@ -118,7 +120,9 @@ ClsClient ClsClient::find(string AccountNumber){
     return _getEmptyClientObj();
 
 }
-
+ClsClient ClsClient::addNewClient(string AccountNumber){
+    return ClsClient(enMode::AddNewMode,"","","","",AccountNumber,"",0);
+}
 bool ClsClient::isClientExist(string AccountNumber){
     ClsClient Client=find(AccountNumber);
     return (!Client.isEmpty());
@@ -127,14 +131,26 @@ bool ClsClient::isClientExist(string AccountNumber){
 ClsClient::enSaveResult ClsClient::save(){
     switch (_Mode){
     case enMode::EmptyMode:
-        return enSaveResult::svFaild;
+        return enSaveResult::svFaildEmptyObj;
     case enMode::UpdateMode:
         _update();
         return enSaveResult::svSucceeded;
        break;
-           default:
-        return enSaveResult::svFaild;
-    }
+    case enMode::AddNewMode:
+        
+        if(ClsClient::isClientExist(_accountNumber)){
+            return enSaveResult::svFaildAccNumberExists;
+        }else{
+            _addNew();
+            _Mode=enMode::UpdateMode;
+            return enSaveResult::svSucceeded;
+
+        }
+        break;
+    
+    default:
+    return enSaveResult::svFaildEmptyObj;
+}
 
 }
 
