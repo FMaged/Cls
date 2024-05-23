@@ -15,16 +15,16 @@ void ClsPerson::setPhone(string Phone){
 }
 
 
-string ClsPerson::getFirstName(){
+string ClsPerson::getFirstName()const{
     return _firstName;
 }
-string ClsPerson::getLastName(){
+string ClsPerson::getLastName()const{
     return _lastName;
 }
-string ClsPerson::getEmail(){
+string ClsPerson::getEmail()const{
     return _email;
 }
-string ClsPerson::getPhone(){
+string ClsPerson::getPhone()const{
     return _phone;
 }
 
@@ -41,10 +41,10 @@ ClsPerson::ClsPerson(string FirstName, string LastName,string Phone){
     _phone=Phone;
 }
 
-string ClsPerson::getFullName(){
+string ClsPerson::getFullName()const{
     return (_firstName+" "+_lastName);
 }
-void ClsPerson::print(){
+void ClsPerson::print()const{
     cout<<"\n-------------------------";
     cout<<"\nFirstName: "<<_firstName;
     cout<<"\nLastName : "<<_lastName;
