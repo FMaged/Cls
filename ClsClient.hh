@@ -11,12 +11,13 @@ class ClsClient:public ClsPerson{
 private:
 
     
-    enum enMode { EmptyMode = 0, UpdateMode = 1,AddNewMode=2 };
+    enum enMode { EmptyMode = 0, UpdateMode = 1,AddNewMode=2,DeleteMode=3 };
     enMode _Mode;
 
     string _accountNumber;
     std::string _pinCode;
     double _balance;
+    bool _markForDelete=false;
 
     static ClsClient _convertLineToClient(string Line,string Seperator="#//#");
     static string _converClientToLine( ClsClient Client,string Seperator="#//#");
@@ -25,6 +26,8 @@ private:
     static void _saveClientsDataToFile(vector<ClsClient>vClients);
     void _update();
     void _addNew();
+
+
     void _addDataLineToFile(string Line);
 
         
@@ -49,6 +52,9 @@ public:
     static ClsClient find(string AccountNumber);
     static bool isClientExist(string AccountNumber);
     static ClsClient addNewClient(string AccountNumber);
+    bool deleteClient();    
+    static vector<ClsClient> getClientsList();  
+    static double getTotalBalances();
 
 
     enum enSaveResult{svFaildEmptyObj=0,svSucceeded=1,svFaildAccNumberExists=2};
