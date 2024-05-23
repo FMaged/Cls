@@ -3,11 +3,10 @@
 #include "ClsDate.hh"
 
 int main(){
+    ClsDate Date1("25.05.2024");
+    ClsDate Date2("27.05.2024");
 
+    cout<<Date2.compareDates(Date1)<<endl;
 
-ClsDate Date2=ClsDate::getSystemDate();
-cout<<endl<<Date2.daysUntilTheEndOfMonth()<<endl;
-
-Date2.print();
     return 0;
 }
