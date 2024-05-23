@@ -1,7 +1,7 @@
 #include "ClsClient.hh"
 #include "ClsValidate.hh"
 #include "ClsString.hh"
-
+#include "ClsUtil.hh"
 
 void readClientInfo(ClsClient& Client){
     cout<<"\nEnter FirstName: ";
@@ -171,8 +171,13 @@ vector<ClsClient>vClients=ClsClient::getClientsList();
 
 
 int main(){
-    showClients();
-    showTotalBalance();
+    ClsUtil::Srand();
+    vector<string>vKeys=ClsUtil::randomKeys(ClsUtil::enCharType::MixKey,4);
+
+    for (size_t i = 0; i < vKeys.size(); i++){
+    cout <<vKeys[i]<<endl;    
+    }
+
 
     return 0;
 }   
