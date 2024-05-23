@@ -58,7 +58,7 @@ static string replaceWordInString(string S,string wordToReplace, string replaceT
 void replaceWordInString(string wordToReplace, string replaceTo,bool MatchCase=1);
 static string removePunctuation(string S);
 void removePunctuation();
-
+static string numberToText(int Number);
 
 
 

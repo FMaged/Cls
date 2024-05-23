@@ -53,8 +53,10 @@ void ClsClient::_saveClientsDataToFile(vector<ClsClient>vClients){
     string line;
     if(myFile.is_open()){
         for(ClsClient& C :vClients){
-            line=_converClientToLine(C);
-            myFile<<line<<endl;
+            if(C._markForDelete==false){
+                line=_converClientToLine(C);
+                myFile<<line<<endl; 
+            }
         }
         myFile.close();
     }
@@ -126,6 +128,32 @@ ClsClient ClsClient::addNewClient(string AccountNumber){
 bool ClsClient::isClientExist(string AccountNumber){
     ClsClient Client=find(AccountNumber);
     return (!Client.isEmpty());
+}
+bool ClsClient::deleteClient(){
+vector<ClsClient>vClients=_loadClientsFromFile();
+for(ClsClient& C:vClients){
+    if(C._accountNumber==_accountNumber){
+        C._markForDelete=true;
+        break;
+    }
+}
+_saveClientsDataToFile(vClients);
+*this =_getEmptyClientObj();
+return true;
+
+
+}
+vector<ClsClient> ClsClient::getClientsList(){
+    return _loadClientsFromFile();
+}
+double ClsClient::getTotalBalances(){
+    vector<ClsClient>vClients=_loadClientsFromFile();
+    double totalBalances=0;
+    for(ClsClient C:vClients){
+        totalBalances+=C._balance;
+    }
+    return totalBalances;
+
 }
 
 ClsClient::enSaveResult ClsClient::save(){
