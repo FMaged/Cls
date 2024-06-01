@@ -76,6 +76,16 @@ char ClsValidate::readChar(){
         }
     }
 }
+char ClsValidate::readY_OR_N(char Yes,char No){
+    char answer=toupper(readChar());
+    while (answer!=Yes&&answer!=No){
+        cout<<"Invalid input, pls enter again a[ y - n ]: \n";
+        answer=toupper(readChar());
+
+    }
+    return answer;
+
+}
 string ClsValidate::readString(){
     string str;
     getline(cin >>ws, str);

@@ -47,7 +47,7 @@ public:
 
     void setBalance(double Balance);
     void setPinCode(string PinCode);
-    void print();
+    //void print();
     static ClsClient find(string AccountNumber);
     static bool isClientExist(string AccountNumber);
     static ClsClient addNewClient(string AccountNumber);

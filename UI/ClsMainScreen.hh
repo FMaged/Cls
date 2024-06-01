@@ -2,6 +2,9 @@
 #include "ClsScreen.hh"
 #include "ClsClientListScreen.hh"
 #include "ClsAddNewClientScreen.hh"
+#include "ClsDeleteClientScreen.hh"
+#include "ClsUpdateClientScreen.hh"
+#include "ClsFindClientScreen.hh"
 #include "../ClsValidate.hh"
 #include <iomanip>
 
@@ -31,13 +34,13 @@ static void _addNewClientnScreen(){
     ClsAddNewClientScreen::showAddNewClientScreen();
 }
 static void _deleteClientScreen(){
-    cout<<"\nDelete Client screen will be here...\n";
+    ClsDeleteClientScreen::showDeleteClientScreen();
 }
 static void _updateClientScreen(){
-    cout<<"\nUpdate Client screen will be here...\n";
+    ClsUpdateClientScreen::showUpdateClientScreen();
 }
 static void _findClientScreen(){    
-    cout<<"\nFind Client screen will be here...\n";
+    ClsFindClientScreen::showFindClientScreen();
 }
 static void _transactionsMenueScreen(){
     cout<<"\nTransactions Menue  will be here...\n";

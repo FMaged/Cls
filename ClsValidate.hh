@@ -19,6 +19,7 @@ static int readIntNumberBetween(short From,short To,string ErrorMessage="Number 
 static double readDblNumber();
 static double readDblNumberBetween(double From, double To,string ErrorMessage="Number is not within range, Enter again:");
 static char readChar();
+static char readY_OR_N(char Yes='Y',char No='N');
 static string readString();
 
 
