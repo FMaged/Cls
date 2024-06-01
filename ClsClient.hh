@@ -54,7 +54,7 @@ public:
     bool deleteClient();    
     static vector<ClsClient> getClientsList();  
     static double getTotalBalances();
-
+    
 
     enum enSaveResult{svFaildEmptyObj=0,svSucceeded=1,svFaildAccNumberExists=2};
     enSaveResult save();

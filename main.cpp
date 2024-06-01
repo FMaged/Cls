@@ -3,6 +3,7 @@
 #include "ClsString.hh"
 #include "UI/ClsScreen.hh"
 #include "UI/ClsMainScreen.hh"
+#include "UI/ClsClientListScreen.hh"
 
 void readClientInfo(ClsClient& Client){
     cout<<"\nEnter FirstName: ";
@@ -173,6 +174,5 @@ vector<ClsClient>vClients=ClsClient::getClientsList();
 
 int main(){
 ClsMainScreen::showMainMenue();
-
   
 }   

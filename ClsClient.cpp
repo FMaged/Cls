@@ -19,19 +19,21 @@ void ClsClient::setBalance(double Balance){
 void ClsClient::setPinCode(string PinCode){
     _pinCode=PinCode;
 }
-void ClsClient::print(){
-    cout<<"\n       Client";
-    cout<<"\n____________________________";
-    cout<<"\nFirstName  :"<<getFirstName();
-    cout<<"\nLastName   :"<<getLastName();
-    cout<<"\nFullName   :"<<getFullName();
-    cout<<"\nEmail      :"<<getEmail();
-    cout<<"\nPhone      :"<<getPhone();
-    cout<<"\nAcc. Number:"<<getAccountNumber();
-    cout<<"\nPassWord   :"<<getPinCode();
-    cout<<"\nBalance    :"<<getBalance();
-    cout<<"\n____________________________\n";
-}
+
+// No UI inside object.
+ void ClsClient::print(){
+     cout<<"\n       Client";
+     cout<<"\n____________________________";
+     cout<<"\nFirstName  :"<<getFirstName();
+     cout<<"\nLastName   :"<<getLastName();
+     cout<<"\nFullName   :"<<getFullName();
+     cout<<"\nEmail      :"<<getEmail();
+     cout<<"\nPhone      :"<<getPhone();
+     cout<<"\nAcc. Number:"<<getAccountNumber();
+     cout<<"\nPassWord   :"<<getPinCode();
+     cout<<"\nBalance    :"<<getBalance();
+     cout<<"\n____________________________\n";
+ }
 vector<ClsClient> ClsClient::_loadClientsFromFile(){
     vector<ClsClient>vClients;
     ifstream myFile;

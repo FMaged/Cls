@@ -1,5 +1,7 @@
 #pragma once 
 #include "ClsScreen.hh"
+#include "ClsClientListScreen.hh"
+#include "ClsAddNewClientScreen.hh"
 #include "../ClsValidate.hh"
 #include <iomanip>
 
@@ -23,10 +25,10 @@ static void _goBackToMainMenue(){
     showMainMenue();
 }
 static void _showAllClientScreen(){
-    cout<<"\nList Screen will be here...\n";
+    ClsClientListScreen::showClientsList();
 }
 static void _addNewClientnScreen(){
-    cout<<"\nAdd new Client screen will be here...\n";
+    ClsAddNewClientScreen::showAddNewClientScreen();
 }
 static void _deleteClientScreen(){
     cout<<"\nDelete Client screen will be here...\n";
