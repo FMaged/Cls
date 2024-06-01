@@ -8,17 +8,16 @@
 static string FileName="Client.txt";
 
 class ClsClient:public ClsPerson{
-private:
 
-    
+private:
     enum enMode { EmptyMode = 0, UpdateMode = 1,AddNewMode=2,DeleteMode=3 };
     enMode _Mode;
-
     string _accountNumber;
     std::string _pinCode;
     double _balance;
     bool _markForDelete=false;
 
+private:
     static ClsClient _convertLineToClient(string Line,string Seperator="#//#");
     static string _converClientToLine( ClsClient Client,string Seperator="#//#");
     static ClsClient _getEmptyClientObj();

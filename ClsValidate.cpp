@@ -38,10 +38,10 @@ int ClsValidate::readIntNumber(){
     }
     return number;
 }
-int ClsValidate::readIntNumberBetween(short From, short To){
+int ClsValidate::readIntNumberBetween(short From, short To,string ErrorMessage){
     int number =readIntNumber();
     while (!isNumberBetween(number,From,To)){
-        cout<<"invalid int, pls enter again["<<From <<" - "<<To<<"]"<<endl;
+        cout<<ErrorMessage<<endl;
         number=readIntNumber();
     }
     return number;
@@ -55,10 +55,10 @@ double ClsValidate::readDblNumber(){
     }
     return number;
 }
-double ClsValidate::readDblNumberBetween(double From,double To){
+double ClsValidate::readDblNumberBetween(double From,double To,string ErrorMessage){
     double number =readDblNumber();
-    while (!isNumberBetween(number,From,To)){
-            printf("Invalid double, please enter again [%.2f - %.2f]\n", From, To);
+    while (!isNumberBetween(number,From,To)){   
+        cout<<ErrorMessage<<endl;
         number=readIntNumber();
     }
     return number;
