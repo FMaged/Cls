@@ -74,7 +74,7 @@ public:
 
     static void showTransactionMenue(){
         system("clear");
-        _drawScreenHeader("\tTransaction Screen");
+        _drawScreenHeader("\t   Transaction Screen");
             cout << setw(37) << left <<""<< "===========================================\n";
             cout << setw(37) << left << "" << "\t\tTransaction Menue\n";
             cout << setw(37) << left << "" << "===========================================\n";

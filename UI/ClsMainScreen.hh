@@ -6,6 +6,7 @@
 #include "ClsUpdateClientScreen.hh"
 #include "ClsFindClientScreen.hh"
 #include "TransactionMenue/ClsTransactionMenueScreen.hh"
+#include "ManageUsers/ManageUsersScreen.hh"
 #include "../ClsValidate.hh"
 #include <iomanip>
 
@@ -47,7 +48,7 @@ static void _transactionsMenueScreen(){
     ClsTransactionMenueScreen::showTransactionMenue();
 }
 static void _manageUsersScreen(){
-    cout<<"\nManageUsers Screen will be here...\n";
+    ClsManageUsersScreen::showManageUserScreen();
 }
 static void _endScreen(){
     cout<<"\nEnd Screen will be here...\n";
@@ -106,7 +107,7 @@ static void _preformMainMenueOption(enMainScreenOptions MainMenueOption){
 public:
     static void showMainMenue(){
         system("clear   ");
-        _drawScreenHeader("\t\tMain Screen");
+        _drawScreenHeader("\t     Main Screen");
             cout << setw(37) << left <<""<< "===========================================\n";
             cout << setw(37) << left << "" << "\t\t\tMain Menue\n";
             cout << setw(37) << left << "" << "===========================================\n";
