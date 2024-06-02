@@ -4,6 +4,7 @@
 #include "../../ClsValidate.hh"
 #include "ClsDepositScreen.hh"
 #include "ClsWithdrawScreen.hh"
+#include "ClsTotalBalancesScreen.hh"
 #include <iomanip>
 
 
@@ -28,10 +29,10 @@ private:
         ClsWithdrawScreen::showWithdrawScreen();
     }
     static void _totalBalances(){
-        cout<<"\nTotalBalances Screen will be here...\n";
+        ClsTotalBalancesScreen::showTotalBalancesScreen();
     }
     static void _goBackToMainMenue(){
-               
+            //dont need to do anything it will go back to the main menue.          
     }
 
 
