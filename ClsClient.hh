@@ -51,6 +51,9 @@ public:
     static ClsClient find(string AccountNumber);
     static bool isClientExist(string AccountNumber);
     static ClsClient addNewClient(string AccountNumber);
+    
+    void deposit(double Amount);
+    bool withdraw(double Amount);
     bool deleteClient();    
     static vector<ClsClient> getClientsList();  
     static double getTotalBalances();

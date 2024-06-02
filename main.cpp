@@ -4,6 +4,7 @@
 #include "UI/ClsScreen.hh"
 #include "UI/ClsMainScreen.hh"
 #include "UI/ClsClientListScreen.hh"
+#include "UI/TransactionMenue/ClsTransactionMenueScreen.hh"
 
 void readClientInfo(ClsClient& Client){
     cout<<"\nEnter FirstName: ";

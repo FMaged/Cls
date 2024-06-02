@@ -131,6 +131,20 @@ bool ClsClient::isClientExist(string AccountNumber){
     ClsClient Client=find(AccountNumber);
     return (!Client.isEmpty());
 }
+void ClsClient::deposit(double Amount){
+    _balance+=Amount;
+    save();
+}
+bool ClsClient::withdraw(double Amount){
+    if(Amount>_balance){
+        return false;
+    }else{
+        _balance-=Amount;
+        save();
+        return true;
+    }
+}
+
 bool ClsClient::deleteClient(){
 vector<ClsClient>vClients=_loadClientsFromFile();
 for(ClsClient& C:vClients){
@@ -164,7 +178,7 @@ ClsClient::enSaveResult ClsClient::save(){
         return enSaveResult::svFaildEmptyObj;
     case enMode::UpdateMode:
         _update();
-        return enSaveResult::svSucceeded;
+        return enSaveResult::svSucceeded;   
        break;
     case enMode::AddNewMode:
         

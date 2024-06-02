@@ -5,6 +5,7 @@
 #include "ClsDeleteClientScreen.hh"
 #include "ClsUpdateClientScreen.hh"
 #include "ClsFindClientScreen.hh"
+#include "TransactionMenue/ClsTransactionMenueScreen.hh"
 #include "../ClsValidate.hh"
 #include <iomanip>
 
@@ -19,7 +20,7 @@ enum enMainScreenOptions{eListClients = 1, eAddNewClient = 2, eDeleteClient = 3,
 
 static short _readMainMenueOption(){
     cout<<setw(37)<<left<<""<<"Chose what do you want [1 - 8]"<<endl;
-    short choice=ClsValidate::readDblNumberBetween(1,8,"Enter Number between 1 to 8?");
+    short choice=ClsValidate::readIntNumberBetween(1,8,"Enter Number between 1 to 8?");
     return choice;
 }
 static void _goBackToMainMenue(){
@@ -43,7 +44,7 @@ static void _findClientScreen(){
     ClsFindClientScreen::showFindClientScreen();
 }
 static void _transactionsMenueScreen(){
-    cout<<"\nTransactions Menue  will be here...\n";
+    ClsTransactionMenueScreen::showTransactionMenue();
 }
 static void _manageUsersScreen(){
     cout<<"\nManageUsers Screen will be here...\n";
