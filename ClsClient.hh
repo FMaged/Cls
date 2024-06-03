@@ -5,7 +5,7 @@
 
 
  
-static string FileName="Client.txt";
+static string ClientsFileName="Client.txt";
 
 class ClsClient:public ClsPerson{
 
@@ -28,7 +28,6 @@ private:
 
 
     void _addDataLineToFile(string Line);
-
         
 
 public:

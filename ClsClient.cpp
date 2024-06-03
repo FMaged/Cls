@@ -37,7 +37,7 @@ void ClsClient::setPinCode(string PinCode){
 vector<ClsClient> ClsClient::_loadClientsFromFile(){
     vector<ClsClient>vClients;
     ifstream myFile;
-    myFile.open(FileName,ios::in);  //read Mode
+    myFile.open(ClientsFileName,ios::in);  //read Mode
     if(myFile.is_open()){
         string line;
         while(getline(myFile,line)){
@@ -51,7 +51,7 @@ vector<ClsClient> ClsClient::_loadClientsFromFile(){
 void ClsClient::_saveClientsDataToFile(vector<ClsClient>vClients){
 
     ofstream myFile;
-    myFile.open(FileName,ios::out);
+    myFile.open(ClientsFileName,ios::out);
     string line;
     if(myFile.is_open()){
         for(ClsClient& C :vClients){
@@ -79,7 +79,7 @@ void ClsClient::_update(){
 }
 void ClsClient::_addDataLineToFile(string Line){
     fstream myFile;
-    myFile.open(FileName,ios::out|ios::app);
+    myFile.open(ClientsFileName,ios::out|ios::app);
     if(myFile.is_open()){
         myFile<<Line<<endl;
         myFile.close();
@@ -109,7 +109,7 @@ ClsClient ClsClient::_getEmptyClientObj(){
 }
 ClsClient ClsClient::find(string AccountNumber){
     fstream myFile;
-    myFile.open(FileName,ios::in);
+    myFile.open(ClientsFileName,ios::in);
     if(myFile.is_open()){
         string line;
         while (getline(myFile,line)){
@@ -117,6 +117,7 @@ ClsClient ClsClient::find(string AccountNumber){
             if(AccountNumber==Client._accountNumber){
                 return Client;
             }
+            
         }
         myFile.close();
         
