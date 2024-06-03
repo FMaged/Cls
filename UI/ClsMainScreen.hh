@@ -8,6 +8,7 @@
 #include "TransactionMenue/ClsTransactionMenueScreen.hh"
 #include "ManageUsers/ManageUsersScreen.hh"
 #include "../ClsValidate.hh"
+#include "../Global.hh"
 #include <iomanip>
 
 
@@ -50,8 +51,8 @@ static void _transactionsMenueScreen(){
 static void _manageUsersScreen(){
     ClsManageUsersScreen::showManageUserScreen();
 }
-static void _endScreen(){
-    cout<<"\nEnd Screen will be here...\n";
+static void _logOut(){
+    CurrentUser=ClsUser::find("","");
 }
 
 
@@ -99,7 +100,7 @@ static void _preformMainMenueOption(enMainScreenOptions MainMenueOption){
         break;
     case enMainScreenOptions::eExit:
         system("clear");
-        _endScreen();
+        _logOut();
         break;
 
     }

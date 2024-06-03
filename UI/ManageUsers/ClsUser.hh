@@ -3,7 +3,9 @@
  #include "../../ClsPerson.hh"
  #include "../../ClsString.hh"
 
-static string UsersFileName="UI/ManageUsers/Users.txt"  ;
+
+
+static string UsersFileName="UI/ManageUsers/Users.txt";
 class ClsUser:public ClsPerson{ 
 private:
     enum enMode{EmptyMode=0,UpdateMode=1,AddNewMode=2};

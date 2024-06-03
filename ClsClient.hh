@@ -5,8 +5,8 @@
 
 
  
-static string ClientsFileName="Client.txt";
 
+static string ClientsFileName="Client.txt";
 class ClsClient:public ClsPerson{
 
 private:
