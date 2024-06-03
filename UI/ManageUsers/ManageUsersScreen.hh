@@ -2,6 +2,11 @@
 
 #include "../ClsScreen.hh"
 #include "../../ClsValidate.hh"
+#include "ClsListUsersScreen.hh"
+#include "ClsAddNewUserScreen.hh"
+#include "ClsDeleteUserScreen.hh"
+#include "ClsUpdateUserScreen.hh"
+#include "ClsFindUserScreen.hh"
 class ClsManageUsersScreen:protected ClsScreen{
 private:
     enum enManageUsersMenueOption{
@@ -20,19 +25,19 @@ private:
         showManageUserScreen();
     }
     static void _showListUsersScreen(){
-        cout<<"\nList Screen will be here!\n";
+        ClsListUsersScreen::showListUsersScrenn();
     }
     static void _showAddNewUserScreen(){
-        cout<<"\nAddNewUser Screen will be here!\n";
+        ClsAddNewUserScreen::showAddNewUserScreen();
     }
     static void _showDeleteUserScreen(){
-        cout<<"\nDeleteUser Screen will be here!\n";
+        ClsDeleteUserScreen::showDeleteUserScreen();
     }
     static void _showUpdateUserScreen(){
-        cout<<"\nUpdateUser Screen will be here!\n";
+        ClsUpdateUserScreen::showUpdateUserScreen();
     }
     static void _showFindUserScreen(){
-        cout<<"\nFindUser Screen will be here!\n";
+        ClsFindUserScreen::showFindUserScreen();
     }
     static  void _showMainMenueScreen(){
         //dont need to do anything it will go back to the main menue. 

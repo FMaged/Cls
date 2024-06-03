@@ -3,7 +3,7 @@
  #include "../../ClsPerson.hh"
  #include "../../ClsString.hh"
 
-static string UsersFileName="UI/ManageUsers/Users.txt";
+static string UsersFileName="UI/ManageUsers/Users.txt"  ;
 class ClsUser:public ClsPerson{ 
 private:
     enum enMode{EmptyMode=0,UpdateMode=1,AddNewMode=2};
@@ -30,7 +30,7 @@ private:
         return line;
     }
     static  ClsUser _getEmptyUserObj(){
-        return ClsUser(enMode::EmptyMode,"","","","","000","",0);
+        return ClsUser(enMode::EmptyMode,"","","","","","",0);
     }
     static vector<ClsUser>_loadUsersFromFile(){
     
@@ -88,6 +88,8 @@ private:
 
 
 public:
+    enum enPermission{pAll=-1,pListUser=1,pAddnewUser=2,pDeleteUser=4,pUpdateUser=8,pFindUser=16,pTransactios=32,pManageUser=64};
+
     ClsUser(enMode Mode, string FirstName, string LastName,
             string Email, string Phone, string UserName, string Password,
             int Permissions):ClsPerson(FirstName,LastName,Email,Phone){
@@ -183,19 +185,24 @@ public:
                 _mode=enMode::UpdateMode;
                 return enSaveResult::svSucceeded;
             }
+            default:
+            // If somehow _mode has an unexpected value, return failure.
+             return enSaveResult::svFaildEmptyObj;
+            
         }
     }
 
 
     bool deleteUser(){
         vector<ClsUser>vUsers=_loadUsersFromFile();
-        _saveUsersDataToFile(vUsers);
+        
         for(ClsUser& U:vUsers){
             if(U._userName==_userName){
                 U.setMarkedForDelete(true);
                 break;
             }
         }
+        _saveUsersDataToFile(vUsers);
         *this=_getEmptyUserObj();
         return true;
     }
