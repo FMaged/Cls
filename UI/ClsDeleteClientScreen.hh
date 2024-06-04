@@ -33,7 +33,7 @@ static void showDeleteClientScreen(){
             if(!checkAccessRight(ClsUser::enPermission::pDeleteUser)){
             return ;
         }
-    _drawScreenHeader("\tDelete Client Screen");
+    _drawScreenHeader("\t     Delete Client Screen");
         string accountNumber;
 
     cout<<"\nPls enter account number: ";
