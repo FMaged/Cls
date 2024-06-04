@@ -110,7 +110,7 @@ public:
         system("clear   ");
         _drawScreenHeader("\t     Main Screen");
             cout << setw(37) << left <<""<< "===========================================\n";
-            cout << setw(37) << left << "" << "\t\t\tMain Menue\n";
+            cout << setw(37) << left << "" << "\t\t     Main Menue\n";
             cout << setw(37) << left << "" << "===========================================\n";
             cout << setw(37) << left << "" << "\t[1] Show Client List.\n";
             cout << setw(37) << left << "" << "\t[2] Add New Client.\n";

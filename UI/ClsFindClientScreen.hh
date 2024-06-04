@@ -29,7 +29,10 @@ private:
 
 public:
     static void showFindClientScreen(){
-        _drawScreenHeader("Find Client Screen");
+        if(!checkAccessRight(ClsUser::enPermission::pFindUser)){
+            return ;
+        }
+        _drawScreenHeader("\t     Find Client Screen");
         cout<<"\nPls enter account number: ";
         string accountNumber=ClsValidate::readString();
         while (!ClsClient::isClientExist(accountNumber)){

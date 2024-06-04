@@ -28,7 +28,7 @@ private:
         cout<<"\nDo you want to give full access? Y/N?";
         char answer=ClsValidate::readY_OR_N();
         if(answer=='Y')return -1;
-        cout<<"\nDo you want to give access to : \n";
+        cout<<"\nDo you want to give access to : ";
         cout<<"\nShow Users List? Y/N? ";
         answer=ClsValidate::readY_OR_N();
         if(answer=='Y'){
@@ -94,6 +94,7 @@ private:
 
 public:
     static void showUpdateUserScreen(){
+
         _drawScreenHeader("\t   Update User Screen");
         cout<<"\nPls enter UserName: ";
         string userName=ClsValidate::readString();

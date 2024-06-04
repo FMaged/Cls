@@ -19,6 +19,10 @@ static void _printClientRecordLine(ClsClient Client){
 
 public:
     static void showClientsList(){
+        if(!checkAccessRight(ClsUser::enPermission::pListUser)){
+            return ;
+        }
+
         vector<ClsClient> vClients=ClsClient::getClientsList();
         string title="\t  Client List Screen";
         string subTitle="\t    (" + to_string(vClients.size()) + ") Client(s).";

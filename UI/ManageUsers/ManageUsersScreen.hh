@@ -53,6 +53,7 @@ private:
 
 
     static void _prefomManageUserScreen(enManageUsersMenueOption ManageUsersMenueOption ){
+
         switch (ManageUsersMenueOption){
         case enManageUsersMenueOption::eListUsers:
             system("clear");
@@ -92,6 +93,9 @@ private:
 
 public:
     static void showManageUserScreen(){
+        if(!checkAccessRight(ClsUser::enPermission::pManageUser)){
+            return ;
+        }
         system("clear");
         _drawScreenHeader("\tManage User Screen");
             cout << setw(37) << left <<""<< "===========================================\n";

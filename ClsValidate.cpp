@@ -79,7 +79,7 @@ char ClsValidate::readChar(){
 char ClsValidate::readY_OR_N(char Yes,char No){
     char answer=toupper(readChar());
     while (answer!=Yes&&answer!=No){
-        cout<<"Invalid input, pls enter again a[ y - n ]: \n";
+        cout<<"Invalid input, pls enter again a[ y - n ]: ";
         answer=toupper(readChar());
 
     }

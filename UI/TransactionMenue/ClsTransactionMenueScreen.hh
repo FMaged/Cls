@@ -74,6 +74,9 @@ public:
 
     static void showTransactionMenue(){
         system("clear");
+        if(!checkAccessRight(ClsUser::enPermission::pTransactios)){
+            return ;
+        }
         _drawScreenHeader("\t   Transaction Screen");
             cout << setw(37) << left <<""<< "===========================================\n";
             cout << setw(37) << left << "" << "\t\tTransaction Menue\n";

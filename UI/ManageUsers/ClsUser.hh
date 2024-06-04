@@ -216,7 +216,20 @@ public:
         return _loadUsersFromFile();
     }
 
+bool checkAccessPermission(enPermission Permission){
+    if(this->_permission==enPermission::pAll){
+        return true;
+    }
+    if((Permission&this->_permission)==Permission){
+        return true;
+    }else{
+        return false;
+    }
 
+
+
+
+}
 
 
 

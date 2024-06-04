@@ -54,6 +54,9 @@ private:
 
 public:
     static void showUpdateClientScreen(){
+        if(!checkAccessRight(ClsUser::enPermission::pUpdateUser)){
+            return ;
+        }
         _drawScreenHeader("\tUpdate Client screen");
         cout<<"\nPls enter account number: ";
         string accountNumber=ClsValidate::readString();

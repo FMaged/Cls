@@ -47,6 +47,9 @@ private:
 
 public:
     static void showAddNewClientScreen(){
+                if(!checkAccessRight(ClsUser::enPermission::pAddnewUser)){
+            return ;
+        }
         _drawScreenHeader("\t Add new Client screen");
         string accountNumber;
 
