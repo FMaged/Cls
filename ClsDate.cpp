@@ -258,7 +258,7 @@ bool ClsDate::isWeekEnd()const{
     return isWeekEnd(*this);
 }
 bool ClsDate::isBusinessDay(const ClsDate& Date){
-    return isWeekEnd(Date);
+    return !isWeekEnd(Date);
 }
 bool ClsDate::isBusinessDay()const{
     return isBusinessDay(*this);
@@ -282,7 +282,7 @@ bool ClsDate::isValidDate()const{
 }
 
 
-ClsDate ClsDate::AddOneDay(ClsDate Date){
+ClsDate ClsDate::addOneDay(ClsDate Date){
     if(isLastDayInMonth(Date)){
         if(isLastMonthInYear(Date)){
             Date._day=1;
@@ -296,12 +296,12 @@ ClsDate ClsDate::AddOneDay(ClsDate Date){
     Date._day++;
     return Date;
 }
-void ClsDate::AddOneDay(){
-    *this=AddOneDay(*this);
+void ClsDate::addOneDay(){
+    *this=addOneDay(*this);
 }
 ClsDate ClsDate::increaseDateByXDays(short Days,ClsDate& Date){
     for (int i = 0; i < Days; i++){
-        Date=AddOneDay(Date);
+        Date=addOneDay(Date);
     }
     return Date;
 } 
@@ -543,10 +543,77 @@ if(!isDate1BeforeDate2(Date1,Date2)){
 }
 while (isDate1BeforeDate2(Date1,Date2)){
     Days++;
-    Date1=AddOneDay(Date1);
+    Date1=addOneDay(Date1);
 }
 return IncludeEndDay?++Days*swapFlag:Days*swapFlag;
 
 }
+
+short ClsDate::calculateBusinessDays(ClsDate From,ClsDate To){
+    short businessDays=0;
+    while (isDate1BeforeDate2(From,To)){
+        if(isBusinessDay(From)){
+            businessDays++;
+            
+        }
+        From.addOneDay();
+    }
+    return businessDays;
+    
+}
+short ClsDate::calculateVacationDays(ClsDate From,ClsDate To){
+    return calculateBusinessDays(From,To);
+
+
+
+}
+ClsDate ClsDate::calculateVacationReturnDate(ClsDate From,short VacationDays){
+    short weekEndCounter=0;
+    //Add VacationDays to the start Date 
+    for (short i = 0; i < VacationDays; i++){
+        //Check if the Date is WeekEnd
+        if(isWeekEnd(From)){
+            weekEndCounter++;
+        }
+        From.addOneDay();
+    }
+    //Add the weekEnd Days
+    for (short i = 0; i < weekEndCounter; i++){
+        From.addOneDay();
+    }
+    return From;
+
+}
+ClsDate::enDateCompare ClsDate::compareDates(ClsDate Date1,ClsDate Date2){
+    
+    if(isDate1BeforeDate2(Date1,Date2)) return enDateCompare::Before;
+    if(isDate1EqualToDate2(Date1,Date2)) return enDateCompare::Equal;
+    return enDateCompare::After;
+
+}
+ClsDate::enDateCompare ClsDate::compareDates(ClsDate Date2){
+    return compareDates(*this,Date2);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -178,6 +178,7 @@ int main(){
     cout <<vKeys[i]<<endl;    
     }
 
+    cout<<Date2.compareDates(Date1)<<endl;
 
     return 0;
 }   
