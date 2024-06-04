@@ -19,23 +19,25 @@ void ClsClient::setBalance(double Balance){
 void ClsClient::setPinCode(string PinCode){
     _pinCode=PinCode;
 }
-void ClsClient::print(){
-    cout<<"\n       Client";
-    cout<<"\n____________________________";
-    cout<<"\nFirstName  :"<<getFirstName();
-    cout<<"\nLastName   :"<<getLastName();
-    cout<<"\nFullName   :"<<getFullName();
-    cout<<"\nEmail      :"<<getEmail();
-    cout<<"\nPhone      :"<<getPhone();
-    cout<<"\nAcc. Number:"<<getAccountNumber();
-    cout<<"\nPassWord   :"<<getPinCode();
-    cout<<"\nBalance    :"<<getBalance();
-    cout<<"\n____________________________\n";
-}
+
+// No UI inside object.
+//  void ClsClient::print(){
+//      cout<<"\n       Client";
+//      cout<<"\n____________________________";
+//      cout<<"\nFirstName  :"<<getFirstName();
+//      cout<<"\nLastName   :"<<getLastName();
+//      cout<<"\nFullName   :"<<getFullName();
+//      cout<<"\nEmail      :"<<getEmail();
+//      cout<<"\nPhone      :"<<getPhone();
+//      cout<<"\nAcc. Number:"<<getAccountNumber();
+//      cout<<"\nPassWord   :"<<getPinCode();
+//      cout<<"\nBalance    :"<<getBalance();
+//      cout<<"\n____________________________\n";
+//  }
 vector<ClsClient> ClsClient::_loadClientsFromFile(){
     vector<ClsClient>vClients;
     ifstream myFile;
-    myFile.open(FileName,ios::in);  //read Mode
+    myFile.open(ClientsFileName,ios::in);  //read Mode
     if(myFile.is_open()){
         string line;
         while(getline(myFile,line)){
@@ -49,7 +51,7 @@ vector<ClsClient> ClsClient::_loadClientsFromFile(){
 void ClsClient::_saveClientsDataToFile(vector<ClsClient>vClients){
 
     ofstream myFile;
-    myFile.open(FileName,ios::out);
+    myFile.open(ClientsFileName,ios::out);
     string line;
     if(myFile.is_open()){
         for(ClsClient& C :vClients){
@@ -77,7 +79,7 @@ void ClsClient::_update(){
 }
 void ClsClient::_addDataLineToFile(string Line){
     fstream myFile;
-    myFile.open(FileName,ios::out|ios::app);
+    myFile.open(ClientsFileName,ios::out|ios::app);
     if(myFile.is_open()){
         myFile<<Line<<endl;
         myFile.close();
@@ -107,7 +109,7 @@ ClsClient ClsClient::_getEmptyClientObj(){
 }
 ClsClient ClsClient::find(string AccountNumber){
     fstream myFile;
-    myFile.open(FileName,ios::in);
+    myFile.open(ClientsFileName,ios::in);
     if(myFile.is_open()){
         string line;
         while (getline(myFile,line)){
@@ -115,6 +117,7 @@ ClsClient ClsClient::find(string AccountNumber){
             if(AccountNumber==Client._accountNumber){
                 return Client;
             }
+            
         }
         myFile.close();
         
@@ -129,6 +132,20 @@ bool ClsClient::isClientExist(string AccountNumber){
     ClsClient Client=find(AccountNumber);
     return (!Client.isEmpty());
 }
+void ClsClient::deposit(double Amount){
+    _balance+=Amount;
+    save();
+}
+bool ClsClient::withdraw(double Amount){
+    if(Amount>_balance){
+        return false;
+    }else{
+        _balance-=Amount;
+        save();
+        return true;
+    }
+}
+
 bool ClsClient::deleteClient(){
 vector<ClsClient>vClients=_loadClientsFromFile();
 for(ClsClient& C:vClients){
@@ -162,7 +179,7 @@ ClsClient::enSaveResult ClsClient::save(){
         return enSaveResult::svFaildEmptyObj;
     case enMode::UpdateMode:
         _update();
-        return enSaveResult::svSucceeded;
+        return enSaveResult::svSucceeded;   
        break;
     case enMode::AddNewMode:
         

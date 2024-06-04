@@ -5,20 +5,19 @@
 
 
  
-static string FileName="Client.txt";
 
+static string ClientsFileName="Client.txt";
 class ClsClient:public ClsPerson{
-private:
 
-    
+private:
     enum enMode { EmptyMode = 0, UpdateMode = 1,AddNewMode=2,DeleteMode=3 };
     enMode _Mode;
-
     string _accountNumber;
     std::string _pinCode;
     double _balance;
     bool _markForDelete=false;
 
+private:
     static ClsClient _convertLineToClient(string Line,string Seperator="#//#");
     static string _converClientToLine( ClsClient Client,string Seperator="#//#");
     static ClsClient _getEmptyClientObj();
@@ -29,7 +28,6 @@ private:
 
 
     void _addDataLineToFile(string Line);
-
         
 
 public:
@@ -48,14 +46,17 @@ public:
 
     void setBalance(double Balance);
     void setPinCode(string PinCode);
-    void print();
+    //void print();
     static ClsClient find(string AccountNumber);
     static bool isClientExist(string AccountNumber);
     static ClsClient addNewClient(string AccountNumber);
+    
+    void deposit(double Amount);
+    bool withdraw(double Amount);
     bool deleteClient();    
     static vector<ClsClient> getClientsList();  
     static double getTotalBalances();
-
+    
 
     enum enSaveResult{svFaildEmptyObj=0,svSucceeded=1,svFaildAccNumberExists=2};
     enSaveResult save();
