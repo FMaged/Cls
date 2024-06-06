@@ -2,10 +2,12 @@
  #include <fstream>
  #include "../../ClsPerson.hh"
  #include "../../ClsString.hh"
+ #include "../../ClsDate.hh"
 
 
 
 static string UsersFileName="UI/ManageUsers/Users.txt";
+static string Login_LogFileName="UI/ManageUsers/LoginRegister.txt";
 class ClsUser:public ClsPerson{ 
 private:
     enum enMode{EmptyMode=0,UpdateMode=1,AddNewMode=2};
@@ -87,7 +89,14 @@ private:
     
 
     }
-
+    string _prepareLoginRecord(string Seperator="#//#"){
+        string recordLine="";
+        recordLine+=ClsDate::getSystemDateTimeString()+Seperator;
+        recordLine+=_userName+Seperator;
+        recordLine+=_password+Seperator;
+        recordLine+=to_string(_permission);
+        return recordLine;
+    }
 
 public:
     enum enPermission{pAll=-1,pListUser=1,pAddnewUser=2,pDeleteUser=4,pUpdateUser=8,pFindUser=16,pTransactios=32,pManageUser=64};
@@ -231,7 +240,15 @@ bool checkAccessPermission(enPermission Permission){
 
 }
 
-
+void registerLogin(){
+    string dataLine=_prepareLoginRecord();
+    fstream  myFile;
+    myFile.open(Login_LogFileName,ios::out|ios::app);
+    if(myFile.is_open()){
+        myFile<<dataLine<<endl;
+        myFile.close(); 
+    }
+}
 
 
 

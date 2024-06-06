@@ -5,7 +5,6 @@
 
 int main(){
     while(true){
-   ClsLoginScreen::showLoginScreen();
-        }
-
-}   
+        if(!ClsLoginScreen::showLoginScreen()) break;
+    }
+}
