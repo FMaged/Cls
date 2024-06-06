@@ -1,4 +1,4 @@
-
+#pragma once
 #include "ClsString.hh"
 
 class ClsDate{
@@ -149,7 +149,7 @@ public:
     static int getDifferenceInDays(ClsDate  Date1,ClsDate  Date2,bool IncludeEndDay=false);
     int getDifferenceInDays(const ClsDate&  Date2,bool IncludeEndDay=false)const;
     static ClsDate getSystemDate();
-    static string getSystemDateTimeString();
+    static string getSystemDateTimeString();    // NEED to change the format or better update the ClsDate 
     static void swapDates(ClsDate& Date1,ClsDate& Date2);
     void swapDates(ClsDate& Date2);
 

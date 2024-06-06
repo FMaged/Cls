@@ -29,6 +29,7 @@ private:
             loginFalid=CurrentUser.isEmpty();
 
         } while (loginFalid);
+        CurrentUser.registerLogin();
         ClsMainScreen::showMainMenue();
         return true;
     }
