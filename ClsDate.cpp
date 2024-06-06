@@ -561,6 +561,7 @@ return IncludeEndDay?++Days*swapFlag:Days*swapFlag;
 
 }
 
+
 short ClsDate::calculateBusinessDays(ClsDate From,ClsDate To){
     short businessDays=0;
     while (isDate1BeforeDate2(From,To)){

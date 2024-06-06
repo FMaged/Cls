@@ -147,7 +147,7 @@ public:
     enDateCompare compareDates(ClsDate Date2);
 
     static int getDifferenceInDays(ClsDate  Date1,ClsDate  Date2,bool IncludeEndDay=false);
-    int getDifferenceInDays(const ClsDate&  Date2,bool IncludeEndDay=false)const;
+    int getDifferenceInDays(const ClsDate&  Date2,bool IncludeEndDay=false)const;       //????
     static ClsDate getSystemDate();
     static string getSystemDateTimeString();    // NEED to change the format or better update the ClsDate 
     static void swapDates(ClsDate& Date1,ClsDate& Date2);
