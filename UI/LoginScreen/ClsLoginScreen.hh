@@ -6,13 +6,20 @@
 
 class ClsLoginScreen:protected ClsScreen{
 private:
-    static void _login(){
+    static bool _login(){
         bool loginFalid=false;
+        short faildLoginCount=0;
         string userName, password;
         do
         {
             if(loginFalid){
+                faildLoginCount++;
                 cout<<"\nInvaled UserName/Password\n";
+                cout<<"\nYou have "<<(3-faildLoginCount)<<" Trail(s) to login\n\n";
+            }
+            if(faildLoginCount==3){
+                cout<<"You are locked after 3 faild trails \n\n ";
+                return false;
             }
             cout<<"Enter UserName? ";
             userName=ClsValidate::readString();
@@ -23,13 +30,14 @@ private:
 
         } while (loginFalid);
         ClsMainScreen::showMainMenue();
+        return true;
     }
 
 public:
-    static void showLoginScreen(){
+    static bool showLoginScreen(){
         system("clear");
         _drawScreenHeader("\t      Login Screen");
-        _login();
+        return _login();
     }
 
 
