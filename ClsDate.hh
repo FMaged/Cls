@@ -86,8 +86,8 @@ public:
 
     //increase
 
-    static ClsDate AddOneDay(ClsDate Date);
-    void AddOneDay();
+    static ClsDate addOneDay(ClsDate Date);
+    void addOneDay();
     static ClsDate increaseDateByXDays(short Days,ClsDate& Date);
     void increaseDateByXDays(short Days);
     static ClsDate increaseDateByOneWeek(ClsDate& Date);
@@ -136,12 +136,20 @@ public:
     short daysUntilTheEndOfMonth();
     static short daysUntilTheEndOfYear(const ClsDate& Date);
     short daysUntilTheEndOfYear();
-        
+    
+    static short calculateBusinessDays(ClsDate From,ClsDate To);
+    static short calculateVacationDays(ClsDate From,ClsDate To);
+    static ClsDate calculateVacationReturnDate(ClsDate From,short shortVacationDays);
+
+
+    enum enDateCompare{Before=-1,Equal=0,After=1};
+    static enDateCompare compareDates(ClsDate Date1,ClsDate Date2);
+    enDateCompare compareDates(ClsDate Date2);
 
     static int getDifferenceInDays(ClsDate  Date1,ClsDate  Date2,bool IncludeEndDay=false);
     int getDifferenceInDays(const ClsDate&  Date2,bool IncludeEndDay=false)const;
     static ClsDate getSystemDate();
- 
+    static string getSystemDateTimeString();
     static void swapDates(ClsDate& Date1,ClsDate& Date2);
     void swapDates(ClsDate& Date2);
 
