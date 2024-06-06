@@ -532,7 +532,19 @@ ClsDate ClsDate::getSystemDate(){
     return Date;
 
 }
-
+string ClsDate::getSystemDateTimeString(){
+    time_t t=time(0);
+    tm* now= localtime(&t);
+    short year,month,day,hour,minute,secund;
+    year=now->tm_year+1900;
+    month=now->tm_mon+1;
+    day=now->tm_mday;
+    hour=now->tm_hour;
+    minute=now->tm_min;
+    secund=now->tm_sec;
+    return (to_string(day)+"."+to_string(month)+"."+to_string(year)+"-"+
+            to_string(hour)+":"+to_string(minute)+":"+to_string(secund));
+}
 
 int ClsDate::getDifferenceInDays(ClsDate  Date1,ClsDate  Date2,bool IncludeEndDay){
 int Days=0;
